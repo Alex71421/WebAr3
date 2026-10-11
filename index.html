@@ -6,13 +6,19 @@
 <title>MindAR Face</title> <!-- заголовок вкладки браузера -->
 <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script> <!-- A-Frame: 3D-сцена в браузере -->
 <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-face-aframe.prod.js"></script> <!-- MindAR: трекинг лица -->
+<style> /* стили страницы */
+  body { margin: 0; } /* убирает отступы по краям страницы */
+  .container { position: absolute; width: 100%; height: 100%; overflow: hidden; } /* контейнер на весь экран, лишнее обрезается */
+</style> <!-- конец стилей -->
 </head> <!-- конец служебной части -->
 <body> <!-- содержимое страницы -->
-<!-- a-scene — 3D-сцена; mindar-face включает камеру и поиск лица -->
+<div class="container"> <!-- контейнер, в который MindAR кладёт видео и сцену -->
+<!-- a-scene — 3D-сцена; embedded — сцена берёт размер контейнера, а не всего окна (иначе 3D сжимается) -->
+<!-- mindar-face включает камеру и поиск лица -->
 <!-- filterMinCF — сглаживание в покое (меньше = нет дрожания) -->
 <!-- filterBeta — ослабление сглаживания при движении (больше = нет отставания) -->
 <!-- xr-mode-ui выключает кнопку VR; device-orientation-permission-ui — запрос датчиков на iOS -->
-<a-scene mindar-face="filterMinCF: 0.0001; filterBeta: 10"
+<a-scene embedded mindar-face="filterMinCF: 0.0001; filterBeta: 10"
          xr-mode-ui="enabled: false"
          device-orientation-permission-ui="enabled: false">
   <a-camera active="false" position="0 0 0" look-controls="enabled: false"></a-camera> <!-- камера сцены, ей управляет MindAR -->
@@ -20,5 +26,6 @@
     <a-gltf-model src="glasses.glb" position="0 -0.04 0" rotation="0 0 0" scale="1 1 1"></a-gltf-model> <!-- 3D-модель очков -->
   </a-entity> <!-- конец якоря -->
 </a-scene> <!-- конец сцены -->
+</div> <!-- конец контейнера -->
 </body> <!-- конец содержимого -->
 </html> <!-- конец страницы -->
