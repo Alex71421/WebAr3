@@ -1,0 +1,24 @@
+<!DOCTYPE html> <!-- документ HTML5 -->
+<html lang="ru"> <!-- начало страницы, язык русский -->
+<head> <!-- служебная часть страницы -->
+<meta charset="UTF-8"> <!-- кодировка, чтобы русские буквы отображались правильно -->
+<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- подгонка под экран телефона -->
+<title>MindAR Face</title> <!-- заголовок вкладки браузера -->
+<script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script> <!-- A-Frame: 3D-сцена в браузере -->
+<script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-face-aframe.prod.js"></script> <!-- MindAR: трекинг лица -->
+</head> <!-- конец служебной части -->
+<body> <!-- содержимое страницы -->
+<!-- a-scene — 3D-сцена; mindar-face включает камеру и поиск лица -->
+<!-- filterMinCF — сглаживание в покое (меньше = нет дрожания) -->
+<!-- filterBeta — ослабление сглаживания при движении (больше = нет отставания) -->
+<!-- xr-mode-ui выключает кнопку VR; device-orientation-permission-ui — запрос датчиков на iOS -->
+<a-scene mindar-face="filterMinCF: 0.0001; filterBeta: 10"
+         xr-mode-ui="enabled: false"
+         device-orientation-permission-ui="enabled: false">
+  <a-camera active="false" position="0 0 0" look-controls="enabled: false"></a-camera> <!-- камера сцены, ей управляет MindAR -->
+  <a-entity mindar-face-target="anchorIndex: 168"> <!-- якорь на точке 168 (переносица), 1 = ширина лица -->
+    <a-gltf-model src="glasses.glb" position="0 -0.04 0" rotation="0 0 0" scale="1 1 1"></a-gltf-model> <!-- 3D-модель очков -->
+  </a-entity> <!-- конец якоря -->
+</a-scene> <!-- конец сцены -->
+</body> <!-- конец содержимого -->
+</html> <!-- конец страницы -->
