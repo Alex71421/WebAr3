@@ -18,12 +18,12 @@
 <!-- filterMinCF — сглаживание в покое (меньше = нет дрожания) -->
 <!-- filterBeta — ослабление сглаживания при движении (больше = нет отставания) -->
 <!-- xr-mode-ui выключает кнопку VR; device-orientation-permission-ui — запрос датчиков на iOS -->
-<a-scene embedded mindar-face="filterMinCF: 0.001; filterBeta: 1"
+<a-scene embedded mindar-face="filterMinCF: 0.001; filterBeta: 3"
          xr-mode-ui="enabled: false"
          device-orientation-permission-ui="enabled: false">
   <a-camera active="false" position="0 0 0" look-controls="enabled: false"></a-camera> <!-- камера сцены, ей управляет MindAR -->
   <a-entity mindar-face-target="anchorIndex: 168"> <!-- якорь на точке 168 (переносица), 1 = ширина лица -->
-    <a-sphere radius="0.1" color="red"></a-sphere> <!-- 3D-модель очков -->
+    <a-gltf-model src="glasses.glb" position="0 -0.04 0" rotation="0 0 0" scale="1.25 1.25 1.25"></a-gltf-model> <!-- 3D-модель очков -->
   </a-entity> <!-- конец якоря -->
 </a-scene> <!-- конец сцены -->
 </div> <!-- конец контейнера -->
